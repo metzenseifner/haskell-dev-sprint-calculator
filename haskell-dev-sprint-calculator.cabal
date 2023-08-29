@@ -1,0 +1,104 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.35.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           haskell-dev-sprint-calculator
+version:        1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/haskell-dev-sprint-calculator#readme>
+homepage:       https://github.com/githubuser/haskell-dev-sprint-calculator#readme
+bug-reports:    https://github.com/githubuser/haskell-dev-sprint-calculator/issues
+author:         Jonathan L. Komar
+maintainer:     The Author
+copyright:      2023 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/haskell-dev-sprint-calculator
+
+flag with-examples
+  description: Build the example files within the examples directory.
+  manual: True
+  default: False
+
+library
+  exposed-modules:
+      Input.YamlInput
+      Processing.Process
+  other-modules:
+      Paths_haskell_dev_sprint_calculator
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , optparse-applicative
+    , time
+    , yaml
+  default-language: Haskell2010
+
+executable dev-sprint-calculator
+  main-is: Main.hs
+  other-modules:
+      Paths_haskell_dev_sprint_calculator
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , haskell-dev-sprint-calculator
+    , optparse-applicative
+    , time
+    , yaml
+  default-language: Haskell2010
+
+executable examples
+  main-is: Main.hs
+  other-modules:
+      Config_With_Manual_JSON_DTOs
+      Paths_haskell_dev_sprint_calculator
+  hs-source-dirs:
+      examples
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -Wall -threaded -rtsopts -with-rtsopts=-N -ddump-splices
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , haskell-dev-sprint-calculator
+    , optparse-applicative
+    , raw-strings-qq
+    , time
+    , yaml
+  default-language: Haskell2010
+  if flag(with-examples)
+    buildable: False
+
+test-suite haskell-dev-sprint-calculator-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_haskell_dev_sprint_calculator
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , containers
+    , haskell-dev-sprint-calculator
+    , optparse-applicative
+    , time
+    , yaml
+  default-language: Haskell2010
